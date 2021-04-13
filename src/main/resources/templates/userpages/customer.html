@@ -11,38 +11,23 @@
 <p th:text="${session.user.password}" th:unless="${session == null}">[...]</p>
 
 
-
-
-<div>
-    <form action="action"></form>
-    <label for="listname">Name of your Wishlist:</label><br>
-    <input type="text" id="listname" name="fname" placeholder="type here"><br>
-    <br>
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description" cols="40" rows="2" placeholder="type here"></textarea>
-</div>
-<br>
-
-
-<div>
-    <form action="createwishlist" method="get">
-<!--        <textarea name="noteparam" cols="40" rows="2"></textarea>-->
-
+<td>
+    <form name="wishlist" action="/createwishlist" method="POST">
+        <label for="listname">Name of your Wishlist:</label><br>
+        <input type="text" id="listname" name="listname" placeholder="type here"><br>
+        <br>
+        <label for="description">Description:</label><br>
+        <input id="description" name="description" placeholder="type here"/>
         <br> <input type="submit" value="Create Wishlist"/>
     </form>
-
-</div>
-
-
-
-
+</td>
 
 
 
 <p>Date/Time: <span id="datetime"></span></p>
 <script>
     var dt = new Date();
-    document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+    document.getElementById("datetime").innerHTML = (("0" + dt.getDate()).slice(-2)) + "." + (("0" + (dt.getMonth() + 1)).slice(-2)) + "." + (dt.getFullYear()) + " " + (("0" + dt.getHours()).slice(-2)) + ":" + (("0" + dt.getMinutes()).slice(-2));
 </script>
 
 <span th:text="${error}"></span>

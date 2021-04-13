@@ -48,11 +48,16 @@ public class FrontController {
         return "userpages/" + user.getRole();
     }
 
-//    @GetMapping("/createwishlist")
-//    public String createwishlist() {
-//        return "createwishlist";
-//
-//    }
+    @PostMapping("/createwishlist")
+    public String createwishlist(WebRequest request) throws LoginSampleException {
+
+        String listname = request.getParameter("listname");
+        String description = request.getParameter("description");
+        
+        return "createwishlist/";
+
+
+    }
 
 
     @PostMapping("/register")
