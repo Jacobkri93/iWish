@@ -25,17 +25,16 @@ public class FrontController {
     @GetMapping("/secretstuff")
     public String getSecretStuff(WebRequest request) {
         // Retrieve user object from web request (session scope)
-        User user = (User) request.getAttribute("user",WebRequest.SCOPE_SESSION);
+        User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
 
         // If user object is found on session, i.e. user is logged in, she/he can see secretstuff page
         if (user != null) {
             return "userpages/secretstuff";
-        }
-        else
+        } else
             return "redirect:/";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/home")
     public String loginUser(WebRequest request) throws LoginSampleException {
         //Retrieve values from HTML form via WebRequest
         String email = request.getParameter("email");
@@ -48,6 +47,13 @@ public class FrontController {
         // Go to to page dependent on role
         return "userpages/" + user.getRole();
     }
+
+//    @GetMapping("/createwishlist")
+//    public String createwishlist() {
+//        return "createwishlist";
+//
+//    }
+
 
     @PostMapping("/register")
     public String createUser(WebRequest request) throws LoginSampleException {
@@ -77,7 +83,7 @@ public class FrontController {
 
     @ExceptionHandler(Exception.class)
     public String anotherError(Model model, Exception exception) {
-        model.addAttribute("message",exception.getMessage());
+        model.addAttribute("message", exception.getMessage());
         return "exceptionPage";
     }
 }
