@@ -1,0 +1,45 @@
+body {
+    background-color: #3c3f41;
+}
+
+td {
+    color: #aab4b4;
+    font-weight: bold;
+}
+h1 {
+    font-family: "JetBrains Mono ExtraBold";
+    color:  #dbf450;
+    font-weight: bolder;
+}
+.navbar {
+    overflow: hidden;
+    background-color: #285050;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 5px; /* Position the navbar at the top of the page */
+    width: 99.2%; /* Full width */
+    margin-top: auto;
+
+}
+
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: right;
+    display: block;
+    color: #dbf450;
+    text-align: center;
+
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #6f6e6e;
+    padding: 10px;
+    text-align: left;
+    color: #dbf450;
+}
