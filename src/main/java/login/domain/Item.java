@@ -9,8 +9,8 @@ public class Item {
 //    public String link;
 //    public boolean isReserved;
 
-    public Item(int id, String itemName, String description, double price) {
-        this.id = id;
+    public Item(String itemName, String description, double price) {
+
         this.name = itemName;
         this.description = description;
         this.price = price;

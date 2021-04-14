@@ -6,6 +6,8 @@
 </head>
 <header th:replace="fragments/header.html"> </header>
 <body>
+
+
 <h1>Customer page</h1>
 <h2>Welcome</h2>
 <p th:text="${session.user.email}" th:unless="${session == null}">[...]</p>
@@ -13,20 +15,33 @@
 
 
 <td>
-    <form name="wishlist" action="/createwishlist" method="POST">
-        <label for="listname">Name of your Wishlist:</label><br>
-        <input type="text" id="listname" name="listname" placeholder="type here"><br>
+    <form name="wishlist" action="/AddToWishList" method="POST">
+        <label for="name">Name of item:</label><br>
+        <input type="text" id="name" name="name" placeholder="type name of item here"><br>
         <br>
         <label for="description">Description:</label><br>
         <input id="description" name="description" placeholder="type here"/>
-        <br> <input type="submit" value="Create Wishlist"/>
+        <br> <input type="submit" value="Add Item"/>
+
     </form>
 </td>
 
-<tr th:each="data:${session.itemlist}">
-    <td th:text="${data}">data</td>
-</tr>
-
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${session.items}">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.price}"></td>
+    </tr>
+    </tbody>
+</table>
 
 <p>Date/Time: <span id="datetime"></span></p>
 <script>

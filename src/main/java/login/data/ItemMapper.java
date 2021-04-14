@@ -37,7 +37,8 @@ public class ItemMapper {
                 String description = rs.getString("description");
                 int id = rs.getInt("id");
                 double price = rs.getDouble("price");
-                Item item = new Item(id, name, description, price);
+                Item item = new Item(name, description, price);
+                item.setId(id);
                 return item;
             }
         } catch (SQLException | FileNotFoundException ex) {

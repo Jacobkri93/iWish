@@ -13,7 +13,18 @@ public class ListMapper {
 
 
     public Wishlist addItemToList(User user, Item item) {
-        return null;
+        try {
+            Connection con = DBManager.getConnection();
+            String SQL = "INSERT INTO wishlist (user_id, item_id) VALUES (?,?)";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, user.getId());
+            ps.setInt(2, item.getId());
+
+            ps.executeUpdate();
+
+        } catch (SQLException | FileNotFoundException ex) {
+        }
+        return getWishlist(user);
     }
 
     public Wishlist getWishlist(User user) {
@@ -31,7 +42,8 @@ public class ListMapper {
                 String name = rs.getString("name");
                 int id = rs.getInt("id");
                 double price = rs.getDouble("price");
-                Item item = new Item(id, name, description, price);
+                Item item = new Item(name, description, price);
+                item.setId(id);
                 itemlist.add(item);
             }
         } catch (SQLException | FileNotFoundException ex) {

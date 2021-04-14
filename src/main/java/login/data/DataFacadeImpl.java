@@ -38,7 +38,7 @@ public class DataFacadeImpl implements DataFacade {
 
     @Override
     public Wishlist addToList(User user, Item item) {
-        return null;
+        return listMapper.addItemToList(user, item);
     }
 
 

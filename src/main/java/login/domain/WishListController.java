@@ -16,4 +16,7 @@ public class WishListController {
       //  return wishlist;
     }
 
+    public Wishlist addToWishList(User user, Item item) {
+        return this.facade.addToList(user, item);
+    }
 }

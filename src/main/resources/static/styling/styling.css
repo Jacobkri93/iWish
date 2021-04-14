@@ -14,12 +14,14 @@ h1 {
 .navbar {
     overflow: hidden;
     background-color: #285050;
-    position: fixed; /* Set the navbar to fixed position */
+    /*position: fixed; !* Set the navbar to fixed position *!*/
+    padding: 1em;
     top: 5px; /* Position the navbar at the top of the page */
     width: 99.2%; /* Full width */
     margin-top: auto;
 
 }
+
 
 .navbar a:hover {
     background: #ddd;

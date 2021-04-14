@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.Random;
+
 @Controller
 
 public class FrontController {
@@ -16,6 +18,8 @@ public class FrontController {
     //use case controller (GRASP Controller) - injects concrete facade instance into controller
     private LoginController loginController = new LoginController(new DataFacadeImpl());
     private WishListController wishListController = new WishListController(new DataFacadeImpl());
+    private ItemController itemController = new ItemController(new DataFacadeImpl());
+
 
     @GetMapping("/")
     public String getHome() {
@@ -88,19 +92,23 @@ public class FrontController {
     }
 
 
-   @PostMapping ("createwishlist")
-        public String viewWishList(WebRequest request) throws LoginSampleException {
-       String listname = request.getParameter("listname");
-       String description = request.getParameter("description");
-//       Wishlist wishlist = wishListController.createWishList(listname, description);
-//       setSessionInfoForListName(request, wishlist);
+    @PostMapping("AddToWishList")
+    public String AddToWishList(WebRequest request) throws LoginSampleException {
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
 
+        Item item = itemController.getItem(name);
+        if (item == null) {
+            item = itemController.createItem(new Item(name, description, new Random().nextDouble()*1000));
 
-       return "userpages/createwishlist";
-   }
-    private void setItemsForUser(WebRequest request, Wishlist wishlist) {
-        request.setAttribute("itemlist", wishlist.getItemlist(), WebRequest.SCOPE_SESSION);
+        }
+        User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
+        Wishlist list = wishListController.addToWishList(user, item);
+
+        setSessionInfo(request, user, list);
+        return "userpages/customer";
 
     }
+
 
 }
