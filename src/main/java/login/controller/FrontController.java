@@ -2,7 +2,6 @@ package login.controller;
 
 import login.data.DataFacadeImpl;
 import login.domain.*;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -45,16 +44,12 @@ public class FrontController {
 
         // delegate work + data to login controller
         User user = loginController.login(email, pwd);
-        setSessionInfo(request, user);
+        Wishlist list = wishListController.getWishlist(user);
+        setSessionInfo(request, user, list);
 
         // Go to to page dependent on role
         return "userpages/" + user.getRole();
     }
-
-
-
-
-
 
 
     @PostMapping("/register")
@@ -67,7 +62,8 @@ public class FrontController {
         // If passwords match, work + data is delegated to logic controller
         if (password1.equals(password2)) {
             User user = loginController.createUser(email, password1);
-            setSessionInfo(request, user);
+            Wishlist list = wishListController.getWishlist(user);
+            setSessionInfo(request, user, list);
 
             // Go to page dependent on role
             return "userpages/" + user.getRole();
@@ -77,10 +73,11 @@ public class FrontController {
         }
     }
 
-    private void setSessionInfo(WebRequest request, User user) {
+    private void setSessionInfo(WebRequest request, User user, Wishlist list) {
         // Place user info on session
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         request.setAttribute("role", user.getRole(), WebRequest.SCOPE_SESSION);
+        request.setAttribute("items", list.getItemlist(), WebRequest.SCOPE_SESSION);
     }
 
 
@@ -89,19 +86,21 @@ public class FrontController {
         model.addAttribute("message", exception.getMessage());
         return "exceptionPage";
     }
+
+
    @PostMapping ("createwishlist")
         public String viewWishList(WebRequest request) throws LoginSampleException {
        String listname = request.getParameter("listname");
        String description = request.getParameter("description");
-       Wishlist wishlist = wishListController.createWishList(listname, description);
-       setSessionInfoForListName(request, wishlist);
+//       Wishlist wishlist = wishListController.createWishList(listname, description);
+//       setSessionInfoForListName(request, wishlist);
 
 
        return "userpages/createwishlist";
    }
-    private void setSessionInfoForListName(WebRequest request, Wishlist wishlist) {
-        request.setAttribute("listname", wishlist.getListName(), WebRequest.SCOPE_SESSION);
-        request.setAttribute("description", wishlist.getDescription(), WebRequest.SCOPE_SESSION);
+    private void setItemsForUser(WebRequest request, Wishlist wishlist) {
+        request.setAttribute("itemlist", wishlist.getItemlist(), WebRequest.SCOPE_SESSION);
+
     }
 
 }

@@ -1,13 +1,12 @@
 package login.data;
 
-import login.domain.DataFacade;
-import login.domain.LoginSampleException;
-import login.domain.User;
-import login.domain.Wishlist;
+import login.domain.*;
 
 public class DataFacadeImpl implements DataFacade {
    private UserMapper userMapper = new UserMapper();
+   private ItemMapper itemMapper = new ItemMapper();
    private ListMapper listMapper = new ListMapper();
+
 
     public User login(String email, String password) throws LoginSampleException {
         return userMapper.login(email, password);
@@ -19,12 +18,28 @@ public class DataFacadeImpl implements DataFacade {
     }
 
     @Override
-    public Wishlist createWishList(Wishlist wishlist) throws LoginSampleException {
-        return null;
+    public Item createItem(Item item) {
+        itemMapper.createItem(item);
+        return item;
     }
 
     @Override
-    public Wishlist createWishList(String listname, String description) throws LoginSampleException {
-        return listMapper.createWishList(listname, description);
+    public Item getItem(String name) {
+        return itemMapper.getItem(name);
+
     }
+
+    @Override
+    public Wishlist getWishlist(User user) {
+        return listMapper.getWishlist(user);
+
+    }
+
+
+    @Override
+    public Wishlist addToList(User user, Item item) {
+        return null;
+    }
+
+
 }

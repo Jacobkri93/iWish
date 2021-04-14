@@ -23,6 +23,9 @@
     </form>
 </td>
 
+<tr th:each="data:${session.itemlist}">
+    <td th:text="${data}">data</td>
+</tr>
 
 
 <p>Date/Time: <span id="datetime"></span></p>
