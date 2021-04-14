@@ -7,4 +7,5 @@ public interface DataFacade {
     public Wishlist createWishList(Wishlist wishlist) throws LoginSampleException;
 
 
+    Wishlist createWishList(String listname, String description) throws LoginSampleException;
 }

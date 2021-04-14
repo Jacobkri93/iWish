@@ -8,11 +8,12 @@ public class WishListController {
         this.facade = facade;
     }
 
-    public Wishlist CreateWishList(String listname, String description) throws LoginSampleException {
+    public Wishlist createWishList(String listname, String description) throws LoginSampleException {
+        return facade.createWishList(listname, description);
         // By default, new users are customers
-        Wishlist wishlist = new Wishlist(listname, description);
-        facade.createWishList(wishlist);
-        return wishlist;
+       // Wishlist wishlist = new Wishlist(listname, description);
+       // facade.createWishList(wishlist);
+      //  return wishlist;
     }
 
 }

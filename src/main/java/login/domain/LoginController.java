@@ -21,4 +21,5 @@ public class LoginController {
         facade.createUser(user);
         return user;
     }
+
 }

@@ -1,9 +1,8 @@
 package login.controller;
 
 import login.data.DataFacadeImpl;
-import login.domain.LoginController;
-import login.domain.LoginSampleException;
-import login.domain.User;
+import login.domain.*;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,17 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
+
 public class FrontController {
 
     //use case controller (GRASP Controller) - injects concrete facade instance into controller
     private LoginController loginController = new LoginController(new DataFacadeImpl());
+    private WishListController wishListController = new WishListController(new DataFacadeImpl());
 
     @GetMapping("/")
     public String getHome() {
         return "index";
     }
 
-    @GetMapping("/secretstuff")
+  /*  @GetMapping("/secretstuff")
     public String getSecretStuff(WebRequest request) {
         // Retrieve user object from web request (session scope)
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
@@ -33,6 +34,8 @@ public class FrontController {
         } else
             return "redirect:/";
     }
+
+   */
 
     @PostMapping("/home")
     public String loginUser(WebRequest request) throws LoginSampleException {
@@ -48,16 +51,10 @@ public class FrontController {
         return "userpages/" + user.getRole();
     }
 
-    @PostMapping("/createwishlist")
-    public String createwishlist(WebRequest request) throws LoginSampleException {
-
-        String listname = request.getParameter("listname");
-        String description = request.getParameter("description");
-        
-        return "createwishlist/";
 
 
-    }
+
+
 
 
     @PostMapping("/register")
@@ -86,9 +83,25 @@ public class FrontController {
         request.setAttribute("role", user.getRole(), WebRequest.SCOPE_SESSION);
     }
 
+
     @ExceptionHandler(Exception.class)
     public String anotherError(Model model, Exception exception) {
         model.addAttribute("message", exception.getMessage());
         return "exceptionPage";
     }
+   @PostMapping ("createwishlist")
+        public String viewWishList(WebRequest request) throws LoginSampleException {
+       String listname = request.getParameter("listname");
+       String description = request.getParameter("description");
+       Wishlist wishlist = wishListController.createWishList(listname, description);
+       setSessionInfoForListName(request, wishlist);
+
+
+       return "userpages/createwishlist";
+   }
+    private void setSessionInfoForListName(WebRequest request, Wishlist wishlist) {
+        request.setAttribute("listname", wishlist.getListName(), WebRequest.SCOPE_SESSION);
+        request.setAttribute("description", wishlist.getDescription(), WebRequest.SCOPE_SESSION);
+    }
+
 }

@@ -7,6 +7,7 @@ import login.domain.Wishlist;
 
 public class DataFacadeImpl implements DataFacade {
    private UserMapper userMapper = new UserMapper();
+   private ListMapper listMapper = new ListMapper();
 
     public User login(String email, String password) throws LoginSampleException {
         return userMapper.login(email, password);
@@ -20,5 +21,10 @@ public class DataFacadeImpl implements DataFacade {
     @Override
     public Wishlist createWishList(Wishlist wishlist) throws LoginSampleException {
         return null;
+    }
+
+    @Override
+    public Wishlist createWishList(String listname, String description) throws LoginSampleException {
+        return listMapper.createWishList(listname, description);
     }
 }
