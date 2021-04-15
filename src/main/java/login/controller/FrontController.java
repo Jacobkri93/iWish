@@ -99,7 +99,7 @@ public class FrontController {
 
         Item item = itemController.getItem(name);
         if (item == null) {
-            item = itemController.createItem(new Item(name, description, new Random().nextDouble()*1000));
+            item = itemController.createItem(new Item(name, description, new Random().nextDouble()*10000));
 
         }
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);

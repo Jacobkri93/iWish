@@ -1,5 +1,7 @@
 package login.domain;
 
+import java.util.ArrayList;
+
 public class User {
     public User(String email, String password, String role) {
         this.email = email;
@@ -11,6 +13,9 @@ public class User {
     private String email;
     private String password; // Should be hashed and secured
     private String role;
+
+    //new - gemmes her istedet for session
+    private ArrayList<Item> myWishlist;
 
      public String getEmail() {
         return email;

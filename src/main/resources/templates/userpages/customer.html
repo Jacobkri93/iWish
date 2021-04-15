@@ -34,6 +34,9 @@
         <th>Price</th>
     </tr>
     </thead>
+
+
+
     <tbody>
     <tr th:each="item : ${session.items}">
         <td th:text="${item.name}"></td>
@@ -42,6 +45,8 @@
     </tr>
     </tbody>
 </table>
+
+
 
 <p>Date/Time: <span id="datetime"></span></p>
 <script>
