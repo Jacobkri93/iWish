@@ -18,25 +18,25 @@
                 <form class="login" name="home" action="/home" method="POST">
                     <label for="email"> Email:</label>
                     <br>
-                    <input type="text" id="email" name="email" placeholder="someone@nowhere.com">
+                    <input type="email" id="email" name="email" placeholder="youremail@example.com">
                     <br>
                     <label for="password"></label>Password:<br>
-                    <input type="password" id="password" name="password" placeholder="*****">
+                    <input type="password" required id="password" name="password"  placeholder="*****">
                     <br>
-                    <button type="submit"> Login</button>
+                    <input type="submit" value="Login">
                 </form>
             </td>
             <td>Or Register</td>
             <td>
                 <form class="register" name="register" action="/register" method="POST">
                     <label for="email">Email:</label><br>
-                    <input type="text" name="email" placeholder="someone@nowhere.com">
+                    <input type="email" name="email" placeholder="youremail@example.com">
                     <br>
                     <label for="password"></label>Password:<br>
-                    <input type="password" name="password1" placeholder="*****">
+                    <input type="password" required name="password1" placeholder="*****">
                     <br>
                     <label for="password"></label>Retype Password:<br>
-                    <input type="password" name="password2" placeholder="*****">
+                    <input type="password" required name="password2" placeholder="*****">
                     <br>
                     <input type="submit" value="Register">
 <!--                    Make as botton instead=? -->

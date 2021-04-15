@@ -34,9 +34,9 @@
             <div id="itemadd">
                 <form class="form-group" name="wishlist" action="/AddToWishList" method="POST">
                     <label for="name">Name of item:</label>
-                    <input class="pb-12" type="text" id="name" name="name" placeholder="type name of item here">
+                    <input class="pb-12" type="text" id="name" name="name" required placeholder="type name of item here">
                     <label for="description">Description:</label>
-                    <input class="pb-12" id="description" name="description" placeholder="Descripe the item here"/>
+                    <input class="pb-12" id="description" name="description" required placeholder="Descripe the item here"/>
                     <button type="submit"> Add Item</button> <!-- button istedet for input-->
                 </form>
             </div>
@@ -48,6 +48,7 @@
                         <th>Name:</th>
                         <th>Description:</th>
                         <th>Price:</th>
+                        <th>Reserve:</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,13 @@
                         <td th:text="${item.name}"></td>
                         <td th:text="${item.description}"></td>
                         <td th:text="${item.price}"></td>
+<!--                        added reserve botton to test-->
+                        <td>
+                        <form>
+                            <input type="checkbox">
+                        </form>
+                        </td>
+<!--                        reserve ends/-->
                     </tr>
                     </tbody>
                 </table>
