@@ -3,52 +3,48 @@
 <head>
     <link rel="stylesheet" href="styling/styling.css">
     <meta charset="UTF-8">
-    <title>Landing page</title>
-
+    <title>Welcome to iWish 🎁</title>
 </head>
-<header th:replace="fragments/header.html"> </header>
+
 <body>
-<br>
-<br>
-<br>
-<br>
+<header th:replace="fragments/header.html"></header>
+<main>
+    <h1>Welcome to iWish!</h1>
 
-<h1>Welcome to iWish!</h1>
-
-
-<!--<img class="logo" src="../static/images/iwishlogo2.png" alt="logo" width="300" height="270"-->
-<!--     th:src="@{images/iwishlogo2.png}">-->
-
-<table>
-    <tr><td>Login</td>
-        <td>
-            <form name="home" action="/home" method="POST">
-                Email:<br>
-                <input type="text" name="email" value="someone@nowhere.com">
-                <br>
-                Password:<br>
-                <input type="password" name="password" value="sesam">
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-        </td>
-        <td>Or Register</td>
-        <td>
-            <form name="register" action="/register" method="POST">
-                Email:<br>
-                <input type="text" name="email" value="someone@nowhere.com">
-                <br>
-                Password:<br>
-                <input type="password" name="password1" value="sesam">
-                <br>
-                Retype Password:<br>
-                <input type="password" name="password2" value="sesam">
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-        </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <td>Login</td>
+            <td>
+                <form class="login" name="home" action="/home" method="POST">
+                    <label for="email"> Email:</label>
+                    <br>
+                    <input type="text" id="email" name="email" placeholder="someone@nowhere.com">
+                    <br>
+                    <label for="password"></label>Password:<br>
+                    <input type="password" id="password" name="password" placeholder="*****">
+                    <br>
+                    <button type="submit"> Login</button>
+                </form>
+            </td>
+            <td>Or Register</td>
+            <td>
+                <form class="register" name="register" action="/register" method="POST">
+                    <label for="email">Email:</label><br>
+                    <input type="text" name="email" placeholder="someone@nowhere.com">
+                    <br>
+                    <label for="password"></label>Password:<br>
+                    <input type="password" name="password1" placeholder="*****">
+                    <br>
+                    <label for="password"></label>Retype Password:<br>
+                    <input type="password" name="password2" placeholder="*****">
+                    <br>
+                    <input type="submit" value="Register">
+<!--                    Make as botton instead=? -->
+                </form>
+            </td>
+        </tr>
+    </table>
+</main>
 </body>
 <footer th:replace="fragments/footer.html"></footer>
 </html>
