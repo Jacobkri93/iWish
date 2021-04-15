@@ -26,38 +26,38 @@
     </section>
     <br>
     <section class="Section2">
-        <div>
-            <td id="itemadd">
-                <form name="wishlist" action="/AddToWishList" method="POST">
-                    <label for="name">Name of item:</label><br>
-                    <input type="text" id="name" name="name" placeholder="type name of item here"><br>
-                    <br>
-                    <label for="description">Description:</label><br>
-                    <input id="description" name="description" placeholder="Descripe the item here"/>
-                    <br> <input type="submit" value="Add Item"/>
+        <div id="flex">
+            <div id="itemadd">
+                <form class="form-group" name="wishlist" action="/AddToWishList" method="POST">
+                    <label for="name">Name of item:</label>
+                    <input class="pb-12" type="text" id="name" name="name" placeholder="type name of item here">
+                    <label for="description">Description:</label>
+                    <input class="pb-12" id="description" name="description" placeholder="Descripe the item here"/>
+                    <button type="submit"> Add Item</button> <!-- button istedet for input-->
                 </form>
-            </td>
+            </div>
+            <div class="span-2">
+                <p class="no-margin">Your wishlist:</p> <!-- Flyttede den ud af table.-->
+                <table class="table">
+                    <thead class="thead">
+                    <tr>
+                        <th>Name:</th>
+                        <th>Description:</th>
+                        <th>Price:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${session.items}">
+                        <td th:text="${item.name}"></td>
+                        <td th:text="${item.description}"></td>
+                        <td th:text="${item.price}"></td>
+                    </tr>
+                    </tbody>
+                </table>
 
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name:</th>
-                    <th>Description:</th>
-                    <th>Price:</th>
-                </tr>
-                </thead>
-                <p>Your wishlist:</p>
-                <tbody>
-                <tr th:each="item : ${session.items}">
-                    <td th:text="${item.name}"></td>
-                    <td th:text="${item.description}"></td>
-                    <td th:text="${item.price}"></td>
-                </tr>
-                </tbody>
-            </table>
-
-            <hr style="border-color: Black">
+            </div>
         </div>
+        <hr style="border-color: Black">
     </section>
     <section class="Section3">
         <h3>If you need inspiration:</h3>
