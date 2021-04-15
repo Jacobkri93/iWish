@@ -4,10 +4,14 @@
 </head>
 <header th:replace="fragments/header.html">
 </header>
-<form align="right" name="logout" method="get" action="/">
-    <label class="logout">
-        <input name="submit2" type="submit" id="submit2" value="log out">
-    </label>
+
+<!--Old logout botton - might save it for later-->
+<!--<form align="right" name="logout" method="get" action="/">-->
+<!--    <label class="logout">-->
+<!--        <input name="submit2" type="submit" id="submit2" value="log out">-->
+<!--    </label>-->
+
+    <a class="logout" href="http://localhost:8080/"> Log out</a>
 </form>
 <body>
 <main>
@@ -27,7 +31,7 @@
     <br>
     <section class="Section2">
         <div>
-            <td id="itemadd">
+            <td>
                 <form name="wishlist" action="/AddToWishList" method="POST">
                     <label for="name">Name of item:</label><br>
                     <input type="text" id="name" name="name" placeholder="type name of item here"><br>
@@ -67,7 +71,11 @@
             <ul>
                 <li>
                     <a href="https://www.radbag.dk/gaver-til-ham?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTkibMsbJBj_k8Hxk1hi6ggX6SbvW9mBe4WAqLzHii8FizGbT6ijqtcaAuuCEALw_wcB/"
-                       target="_blank">Visit Radbag.dk! - Gift ideas for men</a></li>
+                       target="_blank">Radbag.dk! - Gift ideas for men</a></li>
+                <li>
+                    <a href="https://www.uncommongoods.com/gifts/by-recipient/gifts-for-women"> Uncommongoods.com - Gift
+                        ideas for women</a>
+                </li>
                 <li>
                     <a href="https://www.amazon.com/gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder_797116a77f3e41e9b8bf175add187a06"
                        target="_blank">Amazon has a great variety of items to check out </a></li>
@@ -85,13 +93,13 @@
             <ul>
                 <li>
                     <a href="https://www.elgiganten.dk/content/incito/DK/tilbudsavis.html?openIncito=LXVabkUd"
-                       target="_blank">Elgiganten's Discount newspaper</a></li>
-<!--                <li>-->
-<!--                    <a href="https://www.amazon.com/gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder_797116a77f3e41e9b8bf175add187a06"-->
-<!--                       target="_blank">Amazon has a great variety of items to check out </a></li>-->
-<!--                <li>-->
-<!--                    <a href="https://www.swarovski.com/en-DK/p-5393456/Star-Wars-Master-Yoda/?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTmooI7ZfcfdzVpehkOUr6KawlR1FHlxaRm3cJGcXpddNMMI8bdUDvoaAg_yEALw_wcB&gclsrc=aw.ds"-->
-<!--                       target="_blank"> This month's recommendation </a></li>-->
+                       target="_blank">Elgiganten's Tilbudsavis</a></li>
+                <li>
+                    <a href="https://www.bog-ide.dk/kataloger?gclsrc=ds&&utm_source=bing&utm_medium=cpc&utm_campaign=Brand+-+Generisk+%5BExact%5D&utm_term=bog+og+ide+tilbudsavis&utm_content=Tilbudsavis&gclid=CMrrsrejgPACFcFGGwodp5MINw"
+                       target="_blank">Bog & idé - Tilbudsavis </a></li>
+                <li>
+                    <a href="https://www.imerco.dk/tilbudsavis/avis?pub-id=d455823c&Page=1"
+                       target="_blank"> Imerco - Tilbudsavis </a></li>
 
             </ul>
             </p>
@@ -108,7 +116,6 @@
             <span th:text="${error}"></span>
         </div>
     </section>
-
 
 
 </main>
