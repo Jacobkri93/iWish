@@ -1,5 +1,5 @@
 body {
-    background-color: #3c3f41;
+    background-color: white;
 }
 
 td {
@@ -8,12 +8,12 @@ td {
 }
 h1 {
     font-family: "JetBrains Mono ExtraBold";
-    color:  #dbf450;
+    color:  #285050;
     font-weight: bolder;
 }
 p{
     font-family: "JetBrains Mono ExtraBold";
-    color:  #dbf450;
+    color:  #285050;
     font-weight: bolder;
 }
 .navbar {
@@ -24,19 +24,27 @@ p{
     top: 5px; /* Position the navbar at the top of the page */
     width: 99.2%; /* Full width */
     margin-top: auto;
-
 }
 
 h3{
-    color:  #dbf450;
+    color:  #285050;
 }
 #Inspiration{
-    background-color: azure;
+    background-color: white;
     box-sizing: content-box;
     width: 700px;
     height: 80px;
     padding: 20px;
-    border: 8px solid #dbf450;
+    /*border: 8px solid #dbf450;*/
+}
+
+#Discount{
+    background-color: white;
+    box-sizing: content-box;
+    width: 700px;
+    height: 80px;
+    padding: 20px;
+    /*border: 8px solid #dbf450;*/
 }
 
 .navbar a:hover {

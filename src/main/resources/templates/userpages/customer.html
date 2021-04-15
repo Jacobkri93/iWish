@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<!--<head th:replace="fragments/head.html(pageTitle = 'Customer Page - iWish-->
-<!--🎁')">-->
 <head th:replace="fragments/head.html(pageTitle = 'Customer Page - iWish 🎁')">
 </head>
 <header th:replace="fragments/header.html">
@@ -12,77 +10,107 @@
     </label>
 </form>
 <body>
+<main>
+    <section class="Section1">
+        <div>
+            <h1>Welcome to to your page</h1>
+
+            <p>You are logged in as: </p>
+            <p th:text="${session.user.email}" th:unless="${session == null}">[...]</p>
+            <!--<p th:text="${session.user.password}" th:unless="${session == null}">[...]</p>-->
+
+            <p>Here you can add wishes to your list, and it will be automatically saved!
+                - Enjoy!</p>
+            <hr style="border-color: Black">
+        </div>
+    </section>
+    <br>
+    <section class="Section2">
+        <div>
+            <td id="itemadd">
+                <form name="wishlist" action="/AddToWishList" method="POST">
+                    <label for="name">Name of item:</label><br>
+                    <input type="text" id="name" name="name" placeholder="type name of item here"><br>
+                    <br>
+                    <label for="description">Description:</label><br>
+                    <input id="description" name="description" placeholder="Descripe the item here"/>
+                    <br> <input type="submit" value="Add Item"/>
+                </form>
+            </td>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${session.items}">
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.description}"></td>
+                    <td th:text="${item.price}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <hr style="border-color: Black">
+        </div>
+    </section>
+    <section class="Section3">
+        <h3>If you need inspiration:</h3>
+        <div id="Inspiration">
+
+            <p>
+            <ul>
+                <li>
+                    <a href="https://www.radbag.dk/gaver-til-ham?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTkibMsbJBj_k8Hxk1hi6ggX6SbvW9mBe4WAqLzHii8FizGbT6ijqtcaAuuCEALw_wcB/"
+                       target="_blank">Visit Radbag.dk! - Gift ideas for men</a></li>
+                <li>
+                    <a href="https://www.amazon.com/gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder_797116a77f3e41e9b8bf175add187a06"
+                       target="_blank">Amazon has a great variety of items to check out </a></li>
+                <li>
+                    <a href="https://www.swarovski.com/en-DK/p-5393456/Star-Wars-Master-Yoda/?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTmooI7ZfcfdzVpehkOUr6KawlR1FHlxaRm3cJGcXpddNMMI8bdUDvoaAg_yEALw_wcB&gclsrc=aw.ds"
+                       target="_blank"> This month's recommendation </a></li>
+
+            </ul>
+            </p>
+        </div>
+        <hr style="border-color: Black">
+        <h3>Discount options:</h3>
+        <div id="Discount">
+            <p>
+            <ul>
+                <li>
+                    <a href="https://www.elgiganten.dk/content/incito/DK/tilbudsavis.html?openIncito=LXVabkUd"
+                       target="_blank">Elgiganten's Discount newspaper</a></li>
+<!--                <li>-->
+<!--                    <a href="https://www.amazon.com/gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder_797116a77f3e41e9b8bf175add187a06"-->
+<!--                       target="_blank">Amazon has a great variety of items to check out </a></li>-->
+<!--                <li>-->
+<!--                    <a href="https://www.swarovski.com/en-DK/p-5393456/Star-Wars-Master-Yoda/?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTmooI7ZfcfdzVpehkOUr6KawlR1FHlxaRm3cJGcXpddNMMI8bdUDvoaAg_yEALw_wcB&gclsrc=aw.ds"-->
+<!--                       target="_blank"> This month's recommendation </a></li>-->
+
+            </ul>
+            </p>
+        </div>
+    </section>
+    <hr style="border-color: Black">
+    <section class="Section4">
+        <div><p>Date/Time: <span id="datetime"></span></p>
+            <script>
+                var dt = new Date();
+                document.getElementById("datetime").innerHTML = (("0" + dt.getDate()).slice(-2)) + "." + (("0" + (dt.getMonth() + 1)).slice(-2)) + "." + (dt.getFullYear()) + " " + (("0" + dt.getHours()).slice(-2)) + ":" + (("0" + dt.getMinutes()).slice(-2));
+            </script>
+
+            <span th:text="${error}"></span>
+        </div>
+    </section>
 
 
-<h1>Welcome to to your page</h1>
 
-<p>You are logged in as: </p>
-<p th:text="${session.user.email}" th:unless="${session == null}">[...]</p>
-<!--<p th:text="${session.user.password}" th:unless="${session == null}">[...]</p>-->
-
-<p>Here you can add wishes to your list, and it will be automatically saved!
-    - Enjoy!</p>
-<hr style="border-color: white">
-<td id="itemadd">
-    <form name="wishlist" action="/AddToWishList" method="POST">
-        <label for="name">Name of item:</label><br>
-        <input type="text" id="name" name="name" placeholder="type name of item here"><br>
-        <br>
-        <label for="description">Description:</label><br>
-        <input id="description" name="description" placeholder="Descripe the item here"/>
-        <br> <input type="submit" value="Add Item"/>
-    </form>
-</td>
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${session.items}">
-        <td th:text="${item.name}"></td>
-        <td th:text="${item.description}"></td>
-        <td th:text="${item.price}"></td>
-    </tr>
-    </tbody>
-</table>
-
-<hr style="border-color: white">
-
-<h3>If you need inspiration:</h3>
-<div id="Inspiration">
-
-    <p>
-    <ul>
-        <li>
-            <a href="https://www.radbag.dk/gaver-til-ham?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTkibMsbJBj_k8Hxk1hi6ggX6SbvW9mBe4WAqLzHii8FizGbT6ijqtcaAuuCEALw_wcB/"
-               target="_blank">Visit Radbag.dk! - Gift ideas for men</a></li>
-        <li>
-            <a href="https://www.amazon.com/gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder_797116a77f3e41e9b8bf175add187a06"
-               target="_blank">Amazon has a great variety of items to check out </a></li>
-        <li>
-            <a href="https://www.swarovski.com/en-DK/p-5393456/Star-Wars-Master-Yoda/?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTmooI7ZfcfdzVpehkOUr6KawlR1FHlxaRm3cJGcXpddNMMI8bdUDvoaAg_yEALw_wcB&gclsrc=aw.ds"
-               target="_blank"> This month's recommendation </a></li>
-
-    </ul>
-    </p>
-</div>
-
-<div>
-
-</div>
-
-<p>Date/Time: <span id="datetime"></span></p>
-<script>
-    var dt = new Date();
-    document.getElementById("datetime").innerHTML = (("0" + dt.getDate()).slice(-2)) + "." + (("0" + (dt.getMonth() + 1)).slice(-2)) + "." + (dt.getFullYear()) + " " + (("0" + dt.getHours()).slice(-2)) + ":" + (("0" + dt.getMinutes()).slice(-2));
-</script>
-
-<span th:text="${error}"></span>
+</main>
 </body>
 <footer th:replace="fragments/footer.html"></footer>
 </html>
