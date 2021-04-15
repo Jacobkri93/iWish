@@ -4,25 +4,33 @@
 <!--🎁')">-->
 <head th:replace="fragments/head.html(pageTitle = 'Customer Page - iWish 🎁')">
 </head>
-<header th:replace="fragments/header.html"> </header>
+<header th:replace="fragments/header.html">
+</header>
+<form align="right" name="logout" method="get" action="/">
+    <label class="logout">
+        <input name="submit2" type="submit" id="submit2" value="log out">
+    </label>
+</form>
 <body>
 
 
-<h1>Customer page</h1>
-<h2>Welcome</h2>
+<h1>Welcome to to your page</h1>
+
+<p>You are logged in as: </p>
 <p th:text="${session.user.email}" th:unless="${session == null}">[...]</p>
-<p th:text="${session.user.password}" th:unless="${session == null}">[...]</p>
+<!--<p th:text="${session.user.password}" th:unless="${session == null}">[...]</p>-->
 
-
-<td>
+<p>Here you can add wishes to your list, and it will be automatically saved!
+    - Enjoy!</p>
+<hr style="border-color: white">
+<td id="itemadd">
     <form name="wishlist" action="/AddToWishList" method="POST">
         <label for="name">Name of item:</label><br>
         <input type="text" id="name" name="name" placeholder="type name of item here"><br>
         <br>
         <label for="description">Description:</label><br>
-        <input id="description" name="description" placeholder="type here"/>
+        <input id="description" name="description" placeholder="Descripe the item here"/>
         <br> <input type="submit" value="Add Item"/>
-
     </form>
 </td>
 
@@ -43,11 +51,30 @@
     </tbody>
 </table>
 
-<h3>If you need inspiration</h3>
-<ul>
-    <li><a href="https://www.radbag.dk/gaver-til-ham?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTkibMsbJBj_k8Hxk1hi6ggX6SbvW9mBe4WAqLzHii8FizGbT6ijqtcaAuuCEALw_wcB/"target="_blank">Visit Radbag.dk! - Gaver til mænd</a></li>
-</ul>
+<hr style="border-color: white">
 
+<h3>If you need inspiration:</h3>
+<div id="Inspiration">
+
+    <p>
+    <ul>
+        <li>
+            <a href="https://www.radbag.dk/gaver-til-ham?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTkibMsbJBj_k8Hxk1hi6ggX6SbvW9mBe4WAqLzHii8FizGbT6ijqtcaAuuCEALw_wcB/"
+               target="_blank">Visit Radbag.dk! - Gift ideas for men</a></li>
+        <li>
+            <a href="https://www.amazon.com/gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder_797116a77f3e41e9b8bf175add187a06"
+               target="_blank">Amazon has a great variety of items to check out </a></li>
+        <li>
+            <a href="https://www.swarovski.com/en-DK/p-5393456/Star-Wars-Master-Yoda/?gclid=Cj0KCQjwyN-DBhCDARIsAFOELTmooI7ZfcfdzVpehkOUr6KawlR1FHlxaRm3cJGcXpddNMMI8bdUDvoaAg_yEALw_wcB&gclsrc=aw.ds"
+               target="_blank"> This month's recommendation </a></li>
+
+    </ul>
+    </p>
+</div>
+
+<div>
+
+</div>
 
 <p>Date/Time: <span id="datetime"></span></p>
 <script>

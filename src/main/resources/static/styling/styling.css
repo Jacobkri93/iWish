@@ -11,6 +11,11 @@ h1 {
     color:  #dbf450;
     font-weight: bolder;
 }
+p{
+    font-family: "JetBrains Mono ExtraBold";
+    color:  #dbf450;
+    font-weight: bolder;
+}
 .navbar {
     overflow: hidden;
     background-color: #285050;
@@ -22,6 +27,17 @@ h1 {
 
 }
 
+h3{
+    color:  #dbf450;
+}
+#Inspiration{
+    background-color: azure;
+    box-sizing: content-box;
+    width: 700px;
+    height: 80px;
+    padding: 20px;
+    border: 8px solid #dbf450;
+}
 
 .navbar a:hover {
     background: #ddd;
