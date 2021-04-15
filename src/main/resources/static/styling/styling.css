@@ -3,8 +3,12 @@ body {
 }
 
 td {
-    color: #aab4b4;
+    color: #282828;
     font-weight: bold;
+    border: 2px solid #285050;
+    border-radius: 8px;
+
+
 }
 h1 {
     font-family: "JetBrains Mono ExtraBold";
@@ -26,30 +30,41 @@ p{
     margin-top: auto;
 }
 
+.Section2{
+    color:  #285050;
+}
+
 h3{
     color:  #285050;
 }
 #Inspiration{
-    background-color: white;
+    background-color: #a8a8a8;
     box-sizing: content-box;
     width: 700px;
     height: 80px;
     padding: 20px;
-    /*border: 8px solid #dbf450;*/
+    border: 2px solid midnightblue;
+    border-radius: 8px;
+
 }
 
 #Discount{
-    background-color: white;
+    background-color: #a8a8a8;
     box-sizing: content-box;
     width: 700px;
     height: 80px;
     padding: 20px;
+    border: 2px solid midnightblue;
+    border-radius: 8px;
+
     /*border: 8px solid #dbf450;*/
 }
 
 .navbar a:hover {
     background: #ddd;
     color: black;
+    border-radius: 8px;
+
 }
 
 /* Links inside the navbar */
@@ -58,7 +73,7 @@ h3{
     display: block;
     color: #dbf450;
     text-align: center;
-
+    border-radius: 8px;
     padding: 14px 16px;
     text-decoration: none;
 }
@@ -68,4 +83,14 @@ footer {
     padding: 10px;
     text-align: left;
     color: #dbf450;
+}
+
+.logout{
+    float: right;
+    display: block;
+    color: #dbf450;
+    text-align: center;
+
+    padding: 14px 16px;
+    text-decoration: none;
 }
