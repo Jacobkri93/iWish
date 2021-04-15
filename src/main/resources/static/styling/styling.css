@@ -1,5 +1,53 @@
+.navbar {
+    overflow: hidden;
+    background-color: #285050;
+    /*position: fixed; !* Set the navbar to fixed position *!*/
+    padding: 1em;
+    top: 5px; /* Position the navbar at the top of the page */
+    width: 99.2%; /* Full width */
+    margin-top: auto;
+}
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+    border-radius: 8px;
+}
+/* Links inside the navbar */
+.navbar a {
+    float: right;
+    display: block;
+    color: #dbf450;
+    text-align: center;
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+/*log out botton on customer page*/
+.logout{
+    float: right;
+    background-color: white;
+    border: none;
+    color: #285050;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+/*logout botton hover function*/
+.logout:hover{
+    background-color: #285050;
+    color: white;
+}
+/*body text font and color*/
 body {
     background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 td {
@@ -14,28 +62,22 @@ h1 {
     color:  #285050;
     font-weight: bolder;
 }
+h3{
+    color:  #285050;
+}
+
 p{
     font-family: "JetBrains Mono ExtraBold";
     color:  #285050;
     font-weight: bolder;
 }
-.navbar {
-    overflow: hidden;
-    background-color: #285050;
-    /*position: fixed; !* Set the navbar to fixed position *!*/
-    padding: 1em;
-    top: 5px; /* Position the navbar at the top of the page */
-    width: 99.2%; /* Full width */
-    margin-top: auto;
-}
 
+/*form table for adding wishes*/
 .Section2{
     color:  #285050;
 }
 
-h3{
-    color:  #285050;
-}
+/*inspiration box*/
 #Inspiration{
     background-color: #a8a8a8;
     box-sizing: content-box;
@@ -98,37 +140,9 @@ tr:nth-child(odd) td {
     /*border: 8px solid #dbf450;*/
 }
 
-.navbar a:hover {
-    background: #ddd;
-    color: black;
-    border-radius: 8px;
-
-}
-
-/* Links inside the navbar */
-.navbar a {
-    float: right;
-    display: block;
-    color: #dbf450;
-    text-align: center;
-    border-radius: 8px;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
 footer {
     background-color: #6f6e6e;
     padding: 10px;
     text-align: left;
     color: #dbf450;
-}
-
-.logout{
-    float: right;
-    display: block;
-    color: #dbf450;
-    text-align: center;
-
-    padding: 14px 16px;
-    text-decoration: none;
 }
