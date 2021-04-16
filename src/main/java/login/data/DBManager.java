@@ -16,6 +16,14 @@ public class DBManager {
     private static Connection connection = null;
 
     public static Connection getConnection() throws FileNotFoundException {
+        //Weblauch kode
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Where is your MySQL JDBC Driver?");
+            e.printStackTrace();
+        }
+        //Hertil
         if (connection != null) return connection;
 
         //C:\Users\Jacob\Desktop\loginsample-df69a3dfb40368da972e769a7d0338164e876400\loginsample\src\main\resources\application.properties
