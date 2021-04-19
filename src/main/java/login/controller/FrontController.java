@@ -7,12 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.Random;
 
 @Controller
-
 public class FrontController {
 
     //use case controller (GRASP Controller) - injects concrete facade instance into controller
@@ -92,7 +92,7 @@ public class FrontController {
     }
 
 
-    @PostMapping("AddToWishList")
+    @PostMapping("/AddToWishList")
     public String AddToWishList(WebRequest request) throws LoginSampleException {
         String name = request.getParameter("name");
         String description = request.getParameter("description");
