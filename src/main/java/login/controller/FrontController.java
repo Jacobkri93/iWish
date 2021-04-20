@@ -85,11 +85,11 @@ public class FrontController {
     }
 
 
-    @ExceptionHandler(Exception.class)
-    public String anotherError(Model model, Exception exception) {
-        model.addAttribute("message", exception.getMessage());
-        return "exceptionPage";
-    }
+//    @ExceptionHandler(Exception.class)
+//    public String anotherError(Model model, Exception exception) {
+//        model.addAttribute("message", exception.getMessage());
+//        return "exceptionPage";
+//    }
 
 
     @PostMapping("/AddToWishList")

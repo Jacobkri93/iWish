@@ -42,7 +42,7 @@ public class DBManager {
             ex.printStackTrace();
         }
         try {
-            connection = DriverManager.getConnection(url,user, password);
+            connection = DriverManager.getConnection("jdbc:mysql://13.51.69.194:3306/useradmin?serverTimezone=UTC","remote", "root");
         } catch (SQLException e) {
             e.printStackTrace();
         }
